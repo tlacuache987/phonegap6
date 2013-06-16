@@ -16,7 +16,7 @@
 			
 			var comenzar = function(){
 				showMessageBox();
-				//startWatch();
+				startWatch();
 			}
 			
 			function init(){
@@ -29,7 +29,7 @@
     function startWatch() {
 
         // Update acceleration every 3 seconds
-        var options = { frequency: 0001 };
+        var options = { frequency: 500 };
 
         watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
     }
