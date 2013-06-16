@@ -5,7 +5,7 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title>Hello World</title>
-        <!--<script type="text/javascript" src="cordova-2.7.0.js"></script>-->
+        <script type="text/javascript" src="cordova-2.7.0.js"></script>
 		<script type="text/javascript">
 		
 			var showMessageBox = function() {
@@ -14,19 +14,19 @@
 			
 			var watchID = null;
 			
-			var go = function(){
+			var comenzar = function(){
 				showMessageBox();
 				//startWatch();
 			}
 			
 			function init(){
-				document.addEventListener("deviceready", go, true);
+				document.addEventListener("deviceready", comenzar, true);
 			}
 			
 
     // Start watching the acceleration
     //
-    /*function startWatch() {
+    function startWatch() {
 
         // Update acceleration every 3 seconds
         var options = { frequency: 0001 };
@@ -57,7 +57,7 @@
     //
     function onError() {
         alert('onError!');
-    }*/
+    }
         </script>
     </head>
     <body onload="init();">
