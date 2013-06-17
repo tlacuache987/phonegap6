@@ -2,7 +2,7 @@
 var geolocalizacionWatchID = null;
 
 var iniciarGeolocalizacion = function(){
-	var opc = { maximumAge: 1000, timeout: 5000, enableHighAccuracy: true };
+	var opc = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: false };
 	
 	geolocalizacionWatchID = navigator.geolocation.watchPosition(function(posicion){
 		var element = document.getElementById('geolocalizacion');
