@@ -14,8 +14,8 @@ var iniciarGeolocalizacion = function(){
 							'Heading: ' + posicion.coords.heading + '<br />' +
 							'Speed: ' + posicion.coords.speed + '<br />' +
 							'Timestamp: ' + posicion.timestamp + '<br />';
-	}, function(){
-		navigator.notification.alert("Error al acceder a la geolocalización", "Error !");
+	}, function(error){
+		navigator.notification.alert("Error al acceder a la geolocalización: ["+error.code+"]: "+error.message, "Error !");
 	}, opc);
 }
 
@@ -40,7 +40,7 @@ $(document).ready(function(){
 					'Speed: ' + posicion.coords.speed + '<br />' +
 					'Timestamp: ' + posicion.timestamp + '<br />');
 			}, function(){
-				navigator.notification.alert("Error al acceder a la geolocalización", "Error !");
+				navigator.notification.alert("Error al acceder a la geolocalización: ["+error.code+"]: "+error.message, "Error !");
 		});
 	});
 });
