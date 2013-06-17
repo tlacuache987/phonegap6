@@ -5,11 +5,12 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title>Hello World</title>
-        <script type="text/javascript" src="cordova-2.7.0.js"></script>
+        <!--<script type="text/javascript" src="cordova-2.7.0.js"></script>-->
+        <script src="jquery-1.7.2.min.js"></script>
 		<script type="text/javascript">
 		
 			var showMessageBox = function() {
-				navigator.notification.alert("Hello");
+				navigator.notification.alert("Bienvenido");
 			}
 			
 			var watchID = null;
@@ -17,51 +18,49 @@
 			var comenzar = function(){
 				showMessageBox();
 				startWatch();
+				
+				$("#obtenerAcelerometro").on("click",function(){
+					navigator.notification.alert("Hola mundo");
+				});
 			}
 			
 			function init(){
 				document.addEventListener("deviceready", comenzar, true);
 			}
 			
-
-    // Start watching the acceleration
-    //
-    function startWatch() {
-
-        // Update acceleration every 3 seconds
-        var options = { frequency: 500 };
-
-        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
-    }
-
-    // Stop watching the acceleration
-    //
-    function stopWatch() {
-        if (watchID) {
-            navigator.accelerometer.clearWatch(watchID);
-            watchID = null;
-        }
-    }
-
-    // onSuccess: Get a snapshot of the current acceleration
-    //
-    function onSuccess(acceleration) {
-        var element = document.getElementById('accelerometer');
-        element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
-                            'Acceleration Y: ' + acceleration.y + '<br />' +
-                            'Acceleration Z: ' + acceleration.z + '<br />' +
-                            'Timestamp: '      + acceleration.timestamp + '<br />';
-    }
-
-    // onError: Failed to get the acceleration
-    //
-    function onError() {
-        alert('onError!');
-    }
+			function startWatch() {
+				var options = { frequency: 500 };
+				watchID = navigator.accelerometer.watchAcceleration(onSuccess,
+					onError, options);
+			}
+			
+			function stopWatch() {
+				if (watchID) {
+					navigator.accelerometer.clearWatch(watchID);
+					watchID = null;
+				}
+			}
+			
+			function onSuccess(eceleracion) {
+				var element = document.getElementById('accelerometer');
+				
+				element.innerHTML = 'X: ' + eceleracion.x + '<br />' +
+                            'Y: ' + eceleracion.y + '<br />' +
+                            'Z: ' + eceleracion.z + '<br />' +
+                            'Timestamp: '      + eceleracion.timestamp + '<br />';
+			}
+			
+			function onError() {
+				alert('onError!');
+			}
         </script>
     </head>
     <body onload="init();">
-        <p>content</p>
-        <div id="accelerometer">Waiting for accelerometer...</div>
+        <p>Phonegap API</p>
+        <div id="accelerometer">Esperando el acelerómetro...</div>
+        <br /><br />
+        <div id="obtenerAcelerometro_aqui">Esperando el acelerómetro...</div>
+        <br />
+        <input type="button" value="Acelerómetro" id="obtenerAcelerometro" />
     </body>
 </html>

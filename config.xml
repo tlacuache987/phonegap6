@@ -7,8 +7,8 @@
 	<preference name="phonegap-version" value="2.7.0" />
 	<preference name="orientation" value="portrait" />
 	
-    <name>Hello World</name>
-    <description>test app</description>
+    <name>Phonegap API 1</name>
+    <description>Phonegap app de prueba 1</description>
     <author href="http://sample.com" email="info@sample.com">Fractured Vision Media, LLC</author>
 	
 	<feature name="http://api.phonegap.com/1.0/battery"/>
