@@ -2,9 +2,25 @@
 var geolocalizacionWatchID = null;
 
 var iniciarGeolocalizacion = function(){
-	var opc = { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true };
+	var opc = { timeout: 10000, enableHighAccuracy: true };
 	
 	geolocalizacionWatchID = navigator.geolocation.watchPosition(function(posicion){
+		/*navigator.notification.alert('Latitude: '  + posicion.coords.latitude   + '\n' +
+          'Longitude: ' + posicion.coords.longitude  + '\n');*/
+		
+		var myLat = posicion.coords.latitude;
+    	var myLong = posicion.coords.longitude;
+
+		//MAP
+		var mapOptions = {
+			center: new google.maps.LatLng(myLat, myLong),
+			zoom: 14,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+	
+		var map = new google.maps.Map(document.getElementById("map_canvas"),
+									  mapOptions);
+									  
 		var element = document.getElementById('geolocalizacion');
 		element.innerHTML = 'Latitud: ' + posicion.coords.latitude + '<br />' +
 							'Longitude: ' + posicion.coords.longitude + '<br />' +

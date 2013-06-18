@@ -6,7 +6,8 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <title>Hello World</title>
         <script src="jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="cordova-2.7.0.js"></script>
+        <script src="cordova-2.7.0.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true&amp;libraries=places"></script> 
         <script src="acelerometro.js"></script>
         <script src="geolocalizacion.js"></script>
         <script src="storage.js"></script>
@@ -19,7 +20,11 @@
 			var runApp = function(){
 				mostrarSaludo();
 				iniciarAcelerometro();
-				iniciarGeolocalizacion();
+				try{
+					iniciarGeolocalizacion();
+				}catch(ex){
+					navigator.notification.alert(ex);
+				}
 				iniciarStorage();
 			}
 			
@@ -40,6 +45,7 @@
         <input type="button" value="Acelerómetro" id="obtenerAcelerometro" />
         <br /><hr /><br />
         <div id="geolocalizacion">Esperando la geolocalizacion...</div>
+        <div id="map_canvas" style="width:100%; height:200px"></div>
         <br /><hr /><br />
         <div id="obtenerGeolocalizacion_aqui">Esperando la geolocalización...</div>
         <br />
