@@ -9,6 +9,7 @@
         <script type="text/javascript" src="cordova-2.7.0.js"></script>
         <script src="acelerometro.js"></script>
         <script src="geolocalizacion.js"></script>
+        <script src="storage.js"></script>
 		<script type="text/javascript">
 		
 			var mostrarSaludo = function() {
@@ -19,6 +20,7 @@
 				mostrarSaludo();
 				iniciarAcelerometro();
 				iniciarGeolocalizacion();
+				iniciarStorage();
 			}
 			
 			function init(){
@@ -41,7 +43,13 @@
         <br /><hr /><br />
         <div id="obtenerGeolocalizacion_aqui">Esperando la geolocalización...</div>
         <br />
-        <input type="button" value="Acelerómetro" id="obtenerGeolocalizacion" />
+        <input type="button" value="Geolocalización" id="obtenerGeolocalizacion" />
+        <br /><hr /><br />
+        <br />
+        <input type="button" value="Insertar Registro" id="insertarRegistro" /><br />
+        <input type="button" value="Eliminar Registros" id="eliminarRegistros" /><br />
+        <input type="button" value="Listar Registros" id="listarRegistros" /><br />
+        <div id="resultadoDB_aqui"></div>
         <br /><hr /><br />
     </body>
 </html>
